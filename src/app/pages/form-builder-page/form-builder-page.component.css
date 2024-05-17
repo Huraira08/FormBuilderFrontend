@@ -1,0 +1,72 @@
+.container{
+    margin: 10px 270px;
+    display: flex;
+    justify-content: center;
+    /* 270px; */
+}
+
+.container .form-heading{
+    height: 165px;
+    width: var(--tab-width);
+    background-color: white;
+    border-radius: var(--border-radius);
+    border-top: 10px solid var(--primary-color);
+    padding: 10px 25px;
+    padding-bottom: 10px;
+}
+
+form input:focus{
+    border: none;
+    border-bottom: 2px solid var(--primary-color);
+    box-shadow: none;
+    animation: border-animation 0.4s ease-in-out;
+}
+
+form .input{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+form .input.title{
+    font-size: 30px;
+}
+
+form .question-tab{
+    /* height: 185px; */
+    background-color: white;
+    width: var(--tab-width);
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+    padding: 20px;
+}
+
+@keyframes border-animation {
+    from {
+      transform: translateX(5px); /* Optional: Add a slight upward movement */
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+}
+
+
+nz-select{
+    width: 360px;
+}
+
+.answers-container{
+    margin-top: 20px;
+}
+
+.answer{
+    margin: 20px auto;
+    width: 100%;
+}
+
+.add-question-btn{
+    position: absolute;
+    right: 10%;
+}

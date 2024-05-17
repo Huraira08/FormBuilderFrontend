@@ -1,0 +1,63 @@
+<div class="container" nz-flex nzJustify="center">
+    <form nz-form [formGroup]="metaForm" class="meta-form" (ngSubmit)="createForm()">
+        <div class="form-heading">
+            <nz-form-item>
+                <nz-form-control>
+                  <nz-input-group>
+                    <input class="input title" type="text" nz-input formControlName="formTitle" placeholder="Form Title" />
+                  </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                  <nz-input-group>
+                    <input class="input description" type="text" nz-input formControlName="formDescription" placeholder="Description" />
+                  </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-flex nzAlign="flex-end">
+            <div class="form-array" formArrayName="formQuestions">
+                <div class="question-tab" *ngFor="let question of formQuestions.controls; let i = index;"
+                [formGroupName]="i"
+                >
+                    <div nz-flex nzJustify="space-between" nzGap="40px">
+                        <input class="input" type="text" nz-input formControlName="question" placeholder="Question">
+                        <nz-select nzPlaceHolder="Select question type" formControlName="questionType"
+                        [ngModel]="1" nzSize="large" (ngModelChange)="handleTypeChange($event, i)">
+                            <nz-option nzLabel="Short Question" [nzValue]="0"></nz-option>
+                            <nz-option nzLabel="Multiple Choice" [nzValue]="1"></nz-option>
+                            <nz-option nzLabel="Checkbox" [nzValue]="2"></nz-option>
+                            <nz-option nzLabel="Dropdown" [nzValue]="3"></nz-option>
+                        </nz-select>
+                    </div>
+                    <nz-radio-group formControlName="correctAnswer" style="width: 100%;">
+                        <div formArrayName="answers" class="answers-container">
+                            <div class="answer" *ngFor="let answer of getAnswers(i).controls; let j = index" nz-flex nzGap="20px">
+                                <div style="width: 100%;" nz-flex>
+                                    <label nz-radio [nzValue]="j"></label>
+                                    <input class="input" type="text" nz-input [formControlName]="j" [placeholder]="'Answer '+(j+1)">
+                                </div>
+                                <button type="button" *ngIf="!isShortQuestion(i)" (click)="removeAnswer(i,j)" style="width: 55px; background-color: red;border: none;" nz-button nzType="primary">
+                                    <span nz-icon nzType="minus" nzTheme="outline"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </nz-radio-group>
+                    <div style="margin-top: 20px;" nz-flex nzJustify="end">
+                        <button type="button" *ngIf="!isShortQuestion(i)" (click)="addAnswer(i)" style="width: 50px;" nz-button nzType="primary">
+                            <span nz-icon nzType="plus" nzTheme="outline"></span>
+                        </button>
+                    </div>
+                    <label nz-checkbox formControlName="required">
+                        <span>Required</span>
+                      </label>
+                </div>
+            </div>
+            <button nz-button nzType="primary" class="add-question-btn" (click)="addQuestion()" type="button">Add Question</button>
+        </div>
+
+        <button style="margin-top: 20px;" nz-button [nzType]="'primary'">Create form</button>
+      </form>
+</div>
