@@ -25,6 +25,7 @@ import { NzFlexModule } from 'ng-zorro-antd/flex';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { AnswersBuilderComponent } from './components/answers-builder/answers-builder.component';
 
 
 registerLocaleData(en);
@@ -32,7 +33,8 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    FormBuilderPageComponent
+    FormBuilderPageComponent,
+    AnswersBuilderComponent
   ],
   imports: [
     BrowserModule,

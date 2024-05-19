@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { QuestionType } from '../../models/question-type';
 import { Question } from '../../models/question';
 
@@ -10,7 +10,7 @@ import { Question } from '../../models/question';
 })
 export class FormBuilderPageComponent {
   metaForm!: FormGroup;
-  radioValue: any;
+  // radioValue: any;
 
   constructor(private formBuilder: FormBuilder){
     this.metaForm = this.formBuilder.group({
@@ -36,6 +36,10 @@ export class FormBuilderPageComponent {
 
   getAnswers(index: number){
     return this.formQuestions.at(index).get('answers') as FormArray;
+  }
+
+  getQuestionType(index: number){
+    return this.formQuestions.at(index).get('questionType')!.value;
   }
 
   createForm() {
@@ -80,10 +84,33 @@ export class FormBuilderPageComponent {
       const answers = this.getAnswers(index);
       answers.clear();
       answers.push(this.formBuilder.control('', [Validators.required]));
+    } 
+    const correctAnswer = this.formQuestions.at(index).get('correctAnswer')! as FormControl
+    if (type === QuestionType.CheckboxQuestion) {
+      correctAnswer.setValue([]);
+    } else if (type === 0 || type === 1 || type === 3){
+      correctAnswer.setValue('');
     }
   }
 
-  // handleRadioChange($event: any) {
-  //   console.log($event)
-  // }
+  handleCorrectAnswerChecked(questionIndex: number, answerIndex: number, checked:any){
+    console.log(checked)
+    const correctAnswer = this.formQuestions.at(questionIndex).get('correctAnswer')!.value as number[];
+    const answerExists = correctAnswer.includes(answerIndex);
+
+    if(checked){
+      if (!answerExists) {
+        correctAnswer.push(answerIndex);
+      }
+    }else{
+      if (answerExists) {
+        correctAnswer.splice(correctAnswer.indexOf(answerIndex), 1);
+        console.log(correctAnswer)
+      }
+    }
+  }
+
+  handleRemove(questionIndex: number, answerIndex: number){
+    this.removeAnswer(questionIndex, answerIndex);
+  }
 }

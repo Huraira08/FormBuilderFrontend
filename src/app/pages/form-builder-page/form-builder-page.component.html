@@ -32,19 +32,36 @@
                             <nz-option nzLabel="Dropdown" [nzValue]="3"></nz-option>
                         </nz-select>
                     </div>
-                    <nz-radio-group formControlName="correctAnswer" style="width: 100%;">
-                        <div formArrayName="answers" class="answers-container">
-                            <div class="answer" *ngFor="let answer of getAnswers(i).controls; let j = index" nz-flex nzGap="20px">
-                                <div style="width: 100%;" nz-flex>
-                                    <label nz-radio [nzValue]="j"></label>
-                                    <input class="input" type="text" nz-input [formControlName]="j" [placeholder]="'Answer '+(j+1)">
+                    @if(getQuestionType(i) !== 2){
+                        <nz-radio-group formControlName="correctAnswer" style="width: 100%;">
+                            <div formArrayName="answers" class="answers-container">
+                                <div class="answer" *ngFor="let answer of getAnswers(i).controls; let j = index" nz-flex nzGap="20px">
+                                    <div style="width: 100%;" nz-flex>
+                                        <label nz-radio [nzValue]="j"></label>
+                                        <input class="input" type="text" nz-input [formControlName]="j" [placeholder]="'Answer '+(j+1)">
+                                    </div>
+                                    <button type="button" *ngIf="!isShortQuestion(i)" (click)="removeAnswer(i,j)" style="width: 55px; background-color: red;border: none;" nz-button nzType="primary">
+                                        <span nz-icon nzType="minus" nzTheme="outline"></span>
+                                    </button>
                                 </div>
-                                <button type="button" *ngIf="!isShortQuestion(i)" (click)="removeAnswer(i,j)" style="width: 55px; background-color: red;border: none;" nz-button nzType="primary">
-                                    <span nz-icon nzType="minus" nzTheme="outline"></span>
-                                </button>
                             </div>
-                        </div>
-                    </nz-radio-group>
+                        </nz-radio-group>
+                    }
+                    @else {
+                        <!-- <nz-checkbox-wrapper formControlName="correctAnswer" style="width: 100%;" > -->
+                            <div formArrayName="answers" class="answers-container">
+                                <div class="answer" *ngFor="let answer of getAnswers(i).controls; let j = index" nz-flex nzGap="20px">
+                                    <div style="width: 100%;" nz-flex>
+                                        <label nz-checkbox (nzCheckedChange)="handleCorrectAnswerChecked(i, j, $event)" [nzValue]="j"></label>
+                                        <input class="input" type="text" nz-input [formControlName]="j" [placeholder]="'Answer '+(j+1)">
+                                    </div>
+                                    <button type="button" *ngIf="!isShortQuestion(i)" (click)="removeAnswer(i,j)" style="width: 55px; background-color: red;border: none;" nz-button nzType="primary">
+                                        <span nz-icon nzType="minus" nzTheme="outline"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        <!-- </nz-checkbox-wrapper> -->
+                    }
                     <div style="margin-top: 20px;" nz-flex nzJustify="end">
                         <button type="button" *ngIf="!isShortQuestion(i)" (click)="addAnswer(i)" style="width: 50px;" nz-button nzType="primary">
                             <span nz-icon nzType="plus" nzTheme="outline"></span>
@@ -61,3 +78,9 @@
         <button style="margin-top: 20px;" nz-button [nzType]="'primary'">Create form</button>
       </form>
 </div>
+
+<!-- <app-answers-builder
+                            [answers]="getAnswers(i)"
+                            [isQuestionOfTypeShort]="isShortQuestion(i)"
+                            (removeCurrentAnswer)="handleRemove(i,$event)"
+                            ></app-answers-builder> -->

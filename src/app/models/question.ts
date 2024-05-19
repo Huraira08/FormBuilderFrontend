@@ -5,9 +5,9 @@ export class Question {
     protected question: string;
     protected answers: string[];
     protected required: boolean;
-    protected correctAnswer: string;
+    protected correctAnswer: string | number[];
 
-    constructor(question: string, questionType: QuestionType, answers: string[], required: boolean, correctAnswer: string) {
+    constructor(question: string, questionType: QuestionType, answers: string[], required: boolean, correctAnswer: string | number[]) {
         this.question = question;
         this.questionType = questionType;
         this.answers = answers;
@@ -26,7 +26,7 @@ export class Question {
         return this.answers;
     }
 
-    public getCorrectAnswer(): string{
+    public getCorrectAnswer(): string|number[]{
         return this.correctAnswer;
     }
 }
