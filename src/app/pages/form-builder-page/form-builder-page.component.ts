@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { QuestionType } from '../../models/question-type';
-import { Question } from '../../models/question';
+import { IQuestion, Question } from '../../models/question';
+import { FormStorageService } from '../../services/form-storage/form-storage.service';
 
 @Component({
   selector: 'app-form-builder-page',
@@ -10,9 +11,8 @@ import { Question } from '../../models/question';
 })
 export class FormBuilderPageComponent {
   metaForm!: FormGroup;
-  // radioValue: any;
 
-  constructor(private formBuilder: FormBuilder){
+  constructor(private formBuilder: FormBuilder, private formStorageService: FormStorageService){
     this.metaForm = this.formBuilder.group({
     formTitle: ['', Validators.required],
     formDescription: ['', Validators.required],
@@ -44,12 +44,20 @@ export class FormBuilderPageComponent {
 
   createForm() {
     console.log(this.metaForm.value)
-    let questions: Question[]=[];
-    this.formQuestions.value.forEach((question:any) =>{
-      questions.push(new Question(question.question, question.questionType, 
-        question.answers, question.required, question.correctAnswer));
+    let questions: IQuestion[]=[];
+    this.formQuestions.value.forEach((questionValue:any) =>{
+      questions.push({
+        questionType: questionValue.questionType,
+      question: questionValue.question,
+      answers: questionValue.answers,
+      required: questionValue.required,
+      correctAnswerIndex: questionValue.correctAnswer
+      });
     })
-    console.log(questions)
+    // let questions: IQuestion[] = this.metaForm.value
+    this.formStorageService.saveForm(questions);
+    const newQuestions = this.formStorageService.getForm()! as IQuestion[];
+    console.log(newQuestions[0].answers)
   }
 
   addQuestion(){

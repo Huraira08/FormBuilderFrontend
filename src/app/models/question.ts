@@ -5,14 +5,14 @@ export class Question {
     protected question: string;
     protected answers: string[];
     protected required: boolean;
-    protected correctAnswer: string | number[];
+    protected correctAnswerIndex: number | number[];
 
-    constructor(question: string, questionType: QuestionType, answers: string[], required: boolean, correctAnswer: string | number[]) {
+    constructor(question: string, questionType: QuestionType, answers: string[], required: boolean, correctAnswerIndex: number | number[]) {
         this.question = question;
         this.questionType = questionType;
         this.answers = answers;
         this.required = required;
-        this.correctAnswer = correctAnswer;
+        this.correctAnswerIndex = correctAnswerIndex;
     }
     public getQuestion(): string{
         return this.question;
@@ -26,7 +26,15 @@ export class Question {
         return this.answers;
     }
 
-    public getCorrectAnswer(): string|number[]{
-        return this.correctAnswer;
+    public getCorrectAnswerIndex(): number|number[]{
+        return this.correctAnswerIndex;
     }
+}
+
+export interface IQuestion{
+    questionType: QuestionType
+    question: string;
+    answers: string[];
+    required: boolean;
+    correctAnswerIndex: number | number[];
 }
