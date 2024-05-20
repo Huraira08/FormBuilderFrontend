@@ -9,46 +9,31 @@
         <nz-divider></nz-divider>
     </div>
     @for (question of formMeta.formQuestions; track $index) {
+        <div class="question-tab">
+            <div class="question">
+                {{$index+1}}. {{question.question}}
+            </div>
         @if(question.questionType == 0){
-            <div class="question-tab">
-                <div class="question">
-                    {{question.question}}
-                </div>
                 <app-short-question-options
                 [question]="question"
                 ></app-short-question-options>
-            </div>
         }
         @else if (question.questionType == 1) {
-            <div class="question-tab">
-                <div class="question">
-                    {{question.question}}
-                </div>
                 <app-multiple-choice-options
                 [question]="question"
                 ></app-multiple-choice-options>
-            </div>
         }
         @else if(question.questionType == 2){
-            <div class="question-tab">
-                <div class="question">
-                    {{question.question}}
-                </div>
                 <app-checkbox-options
                 [question]="question"
                 ></app-checkbox-options>
-            </div>
         }
         @else if(question.questionType == 3){
-            <div class="question-tab">
-                <div class="question">
-                    {{question.question}}
-                </div>
                 <app-dropdown-options
                 [question]="question"
                 ></app-dropdown-options>
-            </div>
         }
+    </div>
     }
 
     <div nz-flex nzJustify="flex-start" style="width: 100%;">
