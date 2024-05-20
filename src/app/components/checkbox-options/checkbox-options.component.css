@@ -1,9 +1,13 @@
 .option{
     font-size: 16px;
-    font-weight:500;
+    font-weight:400;
     margin-bottom: 10px;
 }
 
 .ant-checkbox-wrapper + .ant-checkbox-wrapper {
     margin-left: 0!important;
 }
+
+/* ::ng-deep .ant-checkbox{
+    border: 1px solid rgb(41, 41, 41, 0.7);
+} */

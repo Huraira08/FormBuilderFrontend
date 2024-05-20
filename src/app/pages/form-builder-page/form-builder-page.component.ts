@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 export class FormBuilderPageComponent {
   metaForm!: FormGroup;
 
+  selectedDiv: number | null = null
+
   constructor(private formBuilder: FormBuilder, 
     private formStorageService: FormStorageService,
     private router: Router
@@ -96,6 +98,8 @@ export class FormBuilderPageComponent {
   }
 
   handleCorrectAnswerChecked(questionIndex: number, answerIndex: number, checked:any){
+    this.selectDiv(questionIndex)
+    console.log(this.selectedDiv)
     console.log(checked)
     const correctAnswer = this.formQuestions.at(questionIndex).get('correctAnswer')!.value as number[];
     const answerExists = correctAnswer.includes(answerIndex);
@@ -114,5 +118,14 @@ export class FormBuilderPageComponent {
 
   handleRemove(questionIndex: number, answerIndex: number){
     this.removeAnswer(questionIndex, answerIndex);
+  }
+
+  deleteQuestion(questionIndex: number) {
+    this.formQuestions.removeAt(questionIndex);
+    this.selectedDiv = null;
+  }
+
+  selectDiv(index: number){
+    this.selectedDiv = index;
   }
 }

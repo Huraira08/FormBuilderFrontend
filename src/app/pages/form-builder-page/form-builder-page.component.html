@@ -21,6 +21,8 @@
             <div class="form-array" formArrayName="formQuestions">
                 <div class="question-tab" *ngFor="let question of formQuestions.controls; let i = index;"
                 [formGroupName]="i"
+                (click)="selectDiv(i)"
+                [ngClass]="{'selected-div': selectedDiv === i}"
                 >
                     <div nz-flex nzJustify="space-between" nzGap="40px">
                         <input class="input" type="text" nz-input formControlName="question" placeholder="Question">
@@ -65,9 +67,13 @@
                             <span nz-icon nzType="plus" nzTheme="outline"></span>
                         </button>
                     </div>
-                    <label nz-checkbox formControlName="required">
-                        <span>Required</span>
-                      </label>
+                    <nz-divider></nz-divider>
+                    <div nz-flex nzJustify="space-between">
+                        <label (nzCheckedChange)="selectDiv(i)" nz-checkbox formControlName="required">
+                            <span>Required</span>
+                        </label>
+                        <span (click)="deleteQuestion(i)" class="delete-btn" nz-icon nzType="delete" nzTheme="outline"></span>
+                    </div>
                 </div>
             </div>
             <button nz-button nzType="primary" class="add-question-btn" (click)="addQuestion()" type="button">Add Question</button>

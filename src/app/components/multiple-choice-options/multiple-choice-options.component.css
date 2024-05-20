@@ -1,5 +1,9 @@
 .option{
     font-size: 16px;
-    font-weight:500;
+    font-weight:400;
     margin-bottom: 10px;
 }
+/* ::ng-deep .ant-radio{
+    border-radius: 100px;
+    border: 1px solid rgb(41, 41, 41, 0.7);
+} */
