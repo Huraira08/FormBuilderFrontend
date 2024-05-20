@@ -10,7 +10,6 @@ import { FormMeta } from '../../models/form-meta';
 export class FillFormPageComponent {
   formMeta!: FormMeta
   constructor(private formStorageService: FormStorageService){
-    // console.log(this.formStorageService.getForm())
     this.formMeta = this.formStorageService.getForm()!
     console.log(this.formMeta)
   }

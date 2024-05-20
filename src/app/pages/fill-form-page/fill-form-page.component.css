@@ -2,12 +2,11 @@
     margin: 10px 315px;
     display: flex;
     justify-content: center;
-    /* 270px; */
 }
 
 .container .form-heading{
     height: 165px;
-    width: 680px;/*var(--tab-width);*/
+    width: 680px;
     background-color: white;
     border-radius: var(--border-radius);
     border-top: 10px solid var(--primary-color);

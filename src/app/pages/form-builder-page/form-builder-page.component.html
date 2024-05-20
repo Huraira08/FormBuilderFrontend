@@ -48,7 +48,6 @@
                         </nz-radio-group>
                     }
                     @else {
-                        <!-- <nz-checkbox-wrapper formControlName="correctAnswer" style="width: 100%;" > -->
                             <div formArrayName="answers" class="answers-container">
                                 <div class="answer" *ngFor="let answer of getAnswers(i).controls; let j = index" nz-flex nzGap="20px">
                                     <div style="width: 100%;" nz-flex>
@@ -60,7 +59,6 @@
                                     </button>
                                 </div>
                             </div>
-                        <!-- </nz-checkbox-wrapper> -->
                     }
                     <div style="margin-top: 20px;" nz-flex nzJustify="end">
                         <button class="add-answer-btn" type="button" *ngIf="!isShortQuestion(i)" (click)="addAnswer(i)" nz-button nzType="primary">
@@ -78,9 +76,3 @@
         <button class="create-form-btn" style="margin-top: 20px;" nz-button [nzType]="'primary'">Create form</button>
       </form>
 </div>
-
-<!-- <app-answers-builder
-                            [answers]="getAnswers(i)"
-                            [isQuestionOfTypeShort]="isShortQuestion(i)"
-                            (removeCurrentAnswer)="handleRemove(i,$event)"
-                            ></app-answers-builder> -->
