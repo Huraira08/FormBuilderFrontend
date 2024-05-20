@@ -1,0 +1,39 @@
+<div class="container" nz-flex [nzVertical]="true" nzJustify="center" nzAlign="center">
+    <div class="form-heading">
+        <h2 class="form-title">
+            {{formMeta.formTitle}}
+        </h2>
+        <p class="form-description">
+            {{formMeta.formDescription}}
+        </p>
+        <nz-divider></nz-divider>
+    </div>
+    @for (question of formMeta.formQuestions; track $index) {
+        <div class="question-tab">
+            <div class="question">
+                {{question.question}}
+            </div>
+            <app-multiple-choice-options
+            [question]="question"
+            ></app-multiple-choice-options>
+        </div>
+
+        <div class="question-tab">
+            <div class="question">
+                {{question.question}}
+            </div>
+            <app-checkbox-options
+            [question]="question"
+            ></app-checkbox-options>
+        </div>
+
+        <div class="question-tab">
+            <div class="question">
+                {{question.question}}
+            </div>
+            <app-dropdown-options
+            [question]="question"
+            ></app-dropdown-options>
+        </div>
+    }
+</div>

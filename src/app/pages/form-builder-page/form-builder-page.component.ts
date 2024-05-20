@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { QuestionType } from '../../models/question-type';
 import { IQuestion, Question } from '../../models/question';
 import { FormStorageService } from '../../services/form-storage/form-storage.service';
+import { FormMeta } from '../../models/form-meta';
 
 @Component({
   selector: 'app-form-builder-page',
@@ -43,21 +44,23 @@ export class FormBuilderPageComponent {
   }
 
   createForm() {
-    console.log(this.metaForm.value)
-    let questions: IQuestion[]=[];
-    this.formQuestions.value.forEach((questionValue:any) =>{
-      questions.push({
-        questionType: questionValue.questionType,
-      question: questionValue.question,
-      answers: questionValue.answers,
-      required: questionValue.required,
-      correctAnswerIndex: questionValue.correctAnswer
-      });
-    })
+    
+    // let questions: IQuestion[]=[];
+    // this.formQuestions.value.forEach((questionValue:any) =>{
+    //   questions.push({
+    //     questionType: questionValue.questionType,
+    //   question: questionValue.question,
+    //   answers: questionValue.answers,
+    //   required: questionValue.required,
+    //   correctAnswerIndex: questionValue.correctAnswer
+    //   });
+    // })
     // let questions: IQuestion[] = this.metaForm.value
-    this.formStorageService.saveForm(questions);
-    const newQuestions = this.formStorageService.getForm()! as IQuestion[];
-    console.log(newQuestions[0].answers)
+    const formMeta: FormMeta = this.metaForm.value
+    console.log(formMeta)
+    this.formStorageService.saveForm(formMeta);
+    // const newQuestions = this.formStorageService.getForm()! as IQuestion[];
+    // console.log(newQuestions[0].answers)
   }
 
   addQuestion(){

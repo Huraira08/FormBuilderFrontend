@@ -1,0 +1,7 @@
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Choose" [(ngModel)]="selectedOption">
+    <!-- <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+    <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+    <nz-option nzLabel="Tom" nzValue="tom"></nz-option> -->
+    <nz-option *ngFor="let option of question.answers" [nzLabel]="option" [nzValue]="option"></nz-option>
+  
+</nz-select>

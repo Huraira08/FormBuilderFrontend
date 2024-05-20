@@ -1,0 +1,5 @@
+<nz-radio-group [(ngModel)]="selectedAnswer">
+    <div *ngFor="let option of question.answers">
+        <label class="option" nz-radio [nzValue]="option">{{option}}</label>
+    </div>
+</nz-radio-group>

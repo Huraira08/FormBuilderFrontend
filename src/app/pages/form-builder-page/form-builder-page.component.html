@@ -17,7 +17,7 @@
             </nz-form-item>
         </div>
 
-        <div nz-flex nzAlign="flex-end">
+        <div nz-flex [nzVertical]="true" nzAlign="flex-end" nzGap="10px">
             <div class="form-array" formArrayName="formQuestions">
                 <div class="question-tab" *ngFor="let question of formQuestions.controls; let i = index;"
                 [formGroupName]="i"
@@ -40,7 +40,7 @@
                                         <label nz-radio [nzValue]="j"></label>
                                         <input class="input" type="text" nz-input [formControlName]="j" [placeholder]="'Answer '+(j+1)">
                                     </div>
-                                    <button type="button" *ngIf="!isShortQuestion(i)" (click)="removeAnswer(i,j)" style="width: 55px; background-color: red;border: none;" nz-button nzType="primary">
+                                    <button class="remove-answer-btn" type="button" *ngIf="!isShortQuestion(i)" (click)="removeAnswer(i,j)" nz-button nzType="primary">
                                         <span nz-icon nzType="minus" nzTheme="outline"></span>
                                     </button>
                                 </div>
@@ -55,7 +55,7 @@
                                         <label nz-checkbox (nzCheckedChange)="handleCorrectAnswerChecked(i, j, $event)" [nzValue]="j"></label>
                                         <input class="input" type="text" nz-input [formControlName]="j" [placeholder]="'Answer '+(j+1)">
                                     </div>
-                                    <button type="button" *ngIf="!isShortQuestion(i)" (click)="removeAnswer(i,j)" style="width: 55px; background-color: red;border: none;" nz-button nzType="primary">
+                                    <button class="remove-answer-btn" type="button" *ngIf="!isShortQuestion(i)" (click)="removeAnswer(i,j)" nz-button nzType="primary">
                                         <span nz-icon nzType="minus" nzTheme="outline"></span>
                                     </button>
                                 </div>
@@ -63,7 +63,7 @@
                         <!-- </nz-checkbox-wrapper> -->
                     }
                     <div style="margin-top: 20px;" nz-flex nzJustify="end">
-                        <button type="button" *ngIf="!isShortQuestion(i)" (click)="addAnswer(i)" style="width: 50px;" nz-button nzType="primary">
+                        <button class="add-answer-btn" type="button" *ngIf="!isShortQuestion(i)" (click)="addAnswer(i)" nz-button nzType="primary">
                             <span nz-icon nzType="plus" nzTheme="outline"></span>
                         </button>
                     </div>
@@ -75,7 +75,7 @@
             <button nz-button nzType="primary" class="add-question-btn" (click)="addQuestion()" type="button">Add Question</button>
         </div>
 
-        <button style="margin-top: 20px;" nz-button [nzType]="'primary'">Create form</button>
+        <button class="create-form-btn" style="margin-top: 20px;" nz-button [nzType]="'primary'">Create form</button>
       </form>
 </div>
 

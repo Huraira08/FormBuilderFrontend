@@ -4,9 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-// pages
-import { FormBuilderPageComponent } from './pages/form-builder-page/form-builder-page.component';
-
 
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
@@ -15,6 +12,15 @@ import en from '@angular/common/locales/en';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
+
+// pages
+import { FormBuilderPageComponent } from './pages/form-builder-page/form-builder-page.component';
+import { FillFormPageComponent } from './pages/fill-form-page/fill-form-page.component';
+
+// custom components
+import { MultipleChoiceOptionsComponent } from './components/multiple-choice-options/multiple-choice-options.component';
+import { CheckboxOptionsComponent } from './components/checkbox-options/checkbox-options.component';
+import { DropdownOptionsComponent } from './components/dropdown-options/dropdown-options.component';
 
 // Ng zorro imports
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -25,6 +31,9 @@ import { NzFlexModule } from 'ng-zorro-antd/flex';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { ShortQuestionOptionsComponent } from './compnents/short-question-options/short-question-options.component';
+
 
 
 registerLocaleData(en);
@@ -33,6 +42,11 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     FormBuilderPageComponent,
+    FillFormPageComponent,
+    MultipleChoiceOptionsComponent,
+    CheckboxOptionsComponent,
+    DropdownOptionsComponent,
+    ShortQuestionOptionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +61,8 @@ registerLocaleData(en);
     NzFlexModule,
     NzIconModule,
     NzCheckboxModule,
-    NzRadioModule
+    NzRadioModule,
+    NzDividerModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },

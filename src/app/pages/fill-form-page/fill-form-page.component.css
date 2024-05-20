@@ -1,0 +1,38 @@
+.container{
+    margin: 10px 270px;
+    display: flex;
+    justify-content: center;
+    /* 270px; */
+}
+
+.container .form-heading{
+    height: 165px;
+    width: 680px;/*var(--tab-width);*/
+    background-color: white;
+    border-radius: var(--border-radius);
+    border-top: 10px solid var(--primary-color);
+    padding: 10px 25px;
+    padding-bottom: 10px;
+}
+
+.form-title{
+    font-size: 33px;
+}
+
+.form-description{
+    font-size: 17px;
+}
+
+.question-tab{
+    background-color: white;
+    width: 680px;
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.question-tab .question{
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}

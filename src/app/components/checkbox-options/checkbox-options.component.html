@@ -1,0 +1,10 @@
+<nz-checkbox-wrapper nz-flex [nzVertical]="true">
+    <!-- <label nz-checkbox nzValue="A" [ngModel]="true">A</label>
+    <label nz-checkbox nzValue="B">B</label>
+    <label nz-checkbox nzValue="C">C</label>
+    <label nz-checkbox nzValue="D">D</label>
+    <label nz-checkbox nzValue="E">E</label> -->
+    @for (answer of question.answers; track $index) {
+        <label class="option" nz-checkbox [nzValue]="answer">{{answer}}</label>
+    }
+</nz-checkbox-wrapper>

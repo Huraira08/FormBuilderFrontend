@@ -29,6 +29,10 @@ export class Question {
     public getCorrectAnswerIndex(): number|number[]{
         return this.correctAnswerIndex;
     }
+
+    public get isRequired(): boolean{
+        return this.required;
+    }
 }
 
 export interface IQuestion{
