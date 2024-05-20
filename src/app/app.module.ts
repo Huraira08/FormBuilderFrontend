@@ -32,7 +32,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
-import { ShortQuestionOptionsComponent } from './compnents/short-question-options/short-question-options.component';
+import { ShortQuestionOptionsComponent } from './components/short-question-options/short-question-options.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 
 
@@ -47,6 +48,7 @@ registerLocaleData(en);
     CheckboxOptionsComponent,
     DropdownOptionsComponent,
     ShortQuestionOptionsComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

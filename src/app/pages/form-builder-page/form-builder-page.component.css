@@ -75,6 +75,13 @@ nz-select{
     font-weight:600;
 }
 
+.create-form-btn{
+    background-color: var(--primary-color);
+    color: white;
+    height: 40px;
+    border-radius: 5px;
+}
+
 .add-answer-btn,.remove-answer-btn{
     width: 55px;
     /* height: ; */

@@ -1,5 +1,5 @@
 .container{
-    margin: 10px 270px;
+    margin: 10px 315px;
     display: flex;
     justify-content: center;
     /* 270px; */
@@ -35,4 +35,14 @@
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 20px;
+}
+
+.submit{
+    height: 38px;
+    width: 100px;
+    background-color: var(--primary-color);
+    border: none;
+    margin: 20px;
+    border-radius: 5px;
+    font-weight: 600;
 }

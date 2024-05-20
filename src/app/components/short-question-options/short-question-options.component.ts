@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IQuestion } from '../../models/question';
 
 @Component({
   selector: 'app-short-question-options',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './short-question-options.component.css'
 })
 export class ShortQuestionOptionsComponent {
+  @Input() question!: IQuestion
 
+  answer!: string
 }
